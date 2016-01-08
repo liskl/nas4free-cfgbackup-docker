@@ -27,5 +27,9 @@ Use:
 Installation:
 
 	cd the_docker_build_directory
-	docker build -t liskl/nas4free-cfgbak
-	docker run -d -e SAN_HOST='nas4free.example.com' -e SAN_USER='EXAMPLE_USER' -e SAN_PASSWD='EXAMPLE_PASSWORD' -e CONFIG_REPO_URI='https://stash.example.com/scm/lcs/config_backup.git' liskl/nas4free-cfgbak
+	docker build -t liskl/nas4free-cfgbak;
+	docker run -d -e SAN_HOST='nas4free.example.com' \
+                      -e SAN_USER='EXAMPLE_USER' \
+                      -e SAN_PASSWD='EXAMPLE_PASSWORD' \
+                      -e CONFIG_REPO_URI='https://stash.example.com/scm/lcs/config_backup.git' \
+                      liskl/nas4free-cfgbak;
