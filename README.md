@@ -21,6 +21,8 @@ Use:
 		SAN_USER="EXAMPLE_USER"
 		SAN_PASSWD="EXAMPLE_PASSWORD"
 		CONFIG_REPO_URI='https://stash.example.com/scm/lcs/config_backup.git'
+		GIT_USER_EMAIL='nas4free-cfgbak-cron-service@nas4free.example.com'
+		GIT_USER_NAME='nas4free-config-backup-service'
 
 Installation:
 

@@ -18,8 +18,8 @@ RUN git clone ${CONFIG_REPO_URI}
 
 # Say who I am (the Service) 
 WORKDIR /tmp/vault
-RUN git config user.email "vault-cfgbak-cron-service@liskl.com";
-RUN git config user.name "vault configuration backup service";
+RUN git config user.email "${GIT_USER_EMAIL}";
+RUN git config user.name "${GIT_USER_NAME}";
 
 # Add crontab file in the cron directory
 COPY cfg-files/etc/cron.d/vault-cfgbak-cron /etc/cron.d/vault-cfgbak-cron
