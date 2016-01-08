@@ -2,6 +2,7 @@ FROM centos:centos7
 MAINTAINER Loren Lisk <loren.lisk@liskl.com>
 
 ARG CONFIG_REPO_URI
+ENV CONFIG_REPO_URI ${CONFIG_REPO_URI:https://stash.example.com/scm/lcs/config_backup.git}
 
 RUN yum -y update;
 
