@@ -16,20 +16,29 @@ Description:
 
 Use:
 
-	DEFINE Environment Variables
-		SAN_HOST="nas4free.example.com"
-		SAN_USER="EXAMPLE_USER"
-		SAN_PASSWD="EXAMPLE_PASSWORD"
-		CONFIG_REPO_URI='https://stash.example.com/scm/lcs/config_backup.git'
-		GIT_USER_EMAIL='nas4free-cfgbak-cron-service@nas4free.example.com'
-		GIT_USER_NAME='nas4free-config-backup-service'
+DEFINE Environment Variables
+	SAN_HOST="nas4free.example.com"
+	SAN_USER="EXAMPLE_USER"
+	SAN_PASSWD="EXAMPLE_PASSWORD"
+	CONFIG_REPO_URI='https://stash.example.com/scm/lcs/config_backup.git'
+	GIT_USER_EMAIL='nas4free-cfgbak-cron-service@nas4free.example.com'
+	GIT_USER_NAME='nas4free-config-backup-service'
 
 Installation:
 
-	cd the_docker_build_directory
+create a .netrc at ./cfg-files/root/.netrc containing:
+
+        machine stash.example.com
+        login backup-service-account
+        password thisisasecretpassword
+
+then build and deploy from ./
+	
 	docker build -t liskl/nas4free-cfgbak;
 	docker run -d -e SAN_HOST='nas4free.example.com' \
                       -e SAN_USER='EXAMPLE_USER' \
                       -e SAN_PASSWD='EXAMPLE_PASSWORD' \
                       -e CONFIG_REPO_URI='https://stash.example.com/scm/lcs/config_backup.git' \
+                      -e GIT_USER_EMAIL='nas4free-cfgbak-cron-srv@nas4free.example.com' \
+                      -e GIT_USER_NAME='nas4free-config-backup-service' \
                       liskl/nas4free-cfgbak;
