@@ -35,7 +35,7 @@ create a .netrc at ./cfg-files/root/.netrc containing:
 
 then build and deploy from ./
 	
-	docker build -t liskl/nas4free-cfgbak;
+	docker build -t liskl/nas4free-cfgbak --build-arg=CONFIG_REPO_URI='https://stash.example.com/scm/lcs/config_backup.git';
 	docker run -d -e SAN_HOST='nas4free.example.com' \
                       -e SAN_USER='EXAMPLE_USER' \
                       -e SAN_PASSWD='EXAMPLE_PASSWORD' \

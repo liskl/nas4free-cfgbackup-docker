@@ -1,6 +1,8 @@
 FROM centos:centos7
 MAINTAINER Loren Lisk <loren.lisk@liskl.com>
 
+ARG CONFIG_REPO_URI
+
 RUN yum -y update;
 
 RUN yum -y install git curl cronie;
@@ -14,7 +16,7 @@ RUN update-ca-trust
 
 RUN mkdir /tmp/vault
 WORKDIR /tmp/
-RUN git clone ${CONFIG_REPO_URI} 
+RUN git clone "${CONFIG_REPO_URI}"
 
 # Say who I am (the Service) 
 WORKDIR /tmp/vault
