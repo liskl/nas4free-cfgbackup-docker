@@ -34,11 +34,15 @@ create a .netrc at ./cfg-files/root/.netrc containing:
         password thisisasecretpassword
 
 then build and deploy from ./
-	
-	docker build -t liskl/nas4free-cfgbak --build-arg=CONFIG_REPO_URI='https://stash.example.com/scm/lcs/config_backup.git';
-	docker run -d -e SAN_HOST='nas4free.example.com' \
-                      -e SAN_USER='EXAMPLE_USER' \
-                      -e SAN_PASSWD='EXAMPLE_PASSWORD' \
-                      -e GIT_USER_EMAIL='nas4free-cfgbak-cron-srv@nas4free.example.com' \
-                      -e GIT_USER_NAME='nas4free-config-backup-service' \
-                      liskl/nas4free-cfgbak;
+
+	docker build -t liskl/nas4free-cfgbak \
+	 --build-arg=CONFIG_REPO_URI='https://stash.example.com/scm/lcs/config_backup.git' \
+	 --build-arg=GIT_USER_EMAIL='nas4free-cfgbak-cron-srv@nas4free.example.com' \
+	 --build-arg=GIT_USER_NAME='nas4free-config-backup-service' \
+	 ./;
+                                   
+	docker run -d \
+	 -e SAN_HOST='nas4free.example.com' \
+	 -e SAN_USER='EXAMPLE_USER' \
+	 -e SAN_PASSWD='EXAMPLE_PASSWORD' \
+         liskl/nas4free-cfgbak;

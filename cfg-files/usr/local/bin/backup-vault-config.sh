@@ -55,7 +55,8 @@ else
 	OUTPUT=$( git commit -a -m "Cron backup for $(date '+%Y%m%d-%H%M%S')" |tr '\n' ' ' ) 
 
 	# if no changes exit giving $OUTPUT to log else report what happened to $OUTPUT
-	if [[ "$OUTPUT" == *"nothing to commit"* ]]; then
+	if [[ "$OUTPUT" == *"nothing to commit"* ]] && ! [[ "$OUTPUT" == *"Your branch is ahead"* ]]; then
+		OUTPUT="nothing to commit";
 	        exit 0;
 	else
 		OUTPUT="$OUTPUT, $( git push -u origin master |tr '\n' ' ' )";
@@ -63,4 +64,4 @@ else
 fi
 
 # report output to STDIN
-echo "$OUTPUT"
+echo "${OUTPUT}" |tr '\n' ' ';

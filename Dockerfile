@@ -1,12 +1,15 @@
 FROM centos:centos7
 MAINTAINER Loren Lisk <loren.lisk@liskl.com>
 
+ARG GIT_USER_NAME
+ARG GIT_USER_EMAIL
 ARG CONFIG_REPO_URI
-ENV CONFIG_REPO_URI ${CONFIG_REPO_URI:https://stash.example.com/scm/lcs/config_backup.git}
 
-RUN yum -y update;
+ENV GIT_USER_NAME ${GIT_USER_NAME:-"nas4free-config-backup-service"}
+ENV GIT_USER_EMAIL ${GIT_USER_EMAIL:-"nas4free-cfgbak-cron-service@nas4free.example.com"}
+ENV CONFIG_REPO_URI ${CONFIG_REPO_URI:-"https://stash.example.com/scm/lcs/san-cfg_backup.git"}
 
-RUN yum -y install git curl cronie;
+RUN yum -y update && yum -y install git curl cronie && yum -y clean all;
 
 # Add .netrc for passwordless access to stash
 COPY cfg-files/root/.netrc /root/.netrc
