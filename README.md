@@ -17,6 +17,7 @@ Description:
 Use:
 
 DEFINE Environment Variables
+
 	SAN_HOST="nas4free.example.com"
 	SAN_USER="EXAMPLE_USER"
 	SAN_PASSWD="EXAMPLE_PASSWORD"
