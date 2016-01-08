@@ -39,7 +39,6 @@ then build and deploy from ./
 	docker run -d -e SAN_HOST='nas4free.example.com' \
                       -e SAN_USER='EXAMPLE_USER' \
                       -e SAN_PASSWD='EXAMPLE_PASSWORD' \
-                      -e CONFIG_REPO_URI='https://stash.example.com/scm/lcs/config_backup.git' \
                       -e GIT_USER_EMAIL='nas4free-cfgbak-cron-srv@nas4free.example.com' \
                       -e GIT_USER_NAME='nas4free-config-backup-service' \
                       liskl/nas4free-cfgbak;
